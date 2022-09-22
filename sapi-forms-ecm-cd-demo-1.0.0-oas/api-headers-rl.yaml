@@ -1,0 +1,170 @@
+openapi: '3.0.0'
+info:
+  version: 1.0.0
+  title: api-headers-rl
+  description: |-
+    Resolution Life standard definitions for commonly used headers.
+    APIs should import this API fragment to ensure standard consistency.
+externalDocs:
+  description: API Best Practices Design
+  url: 'https://resolutionlife.atlassian.net/wiki/spaces/TDB/pages/246055789/API+Best+Practices+Design'
+paths: {}
+components:
+  parameters:
+    xCorrelationId:
+      # -- All operations should be passed an X-Correlation-Id for tracing purposes.
+      name: X-Correlation-Id
+      description: |-
+        A unique identifier for a whole request chain.
+        Its value must match in pairs request/response.
+      required: true
+      in: header
+      schema:
+        type: string
+        pattern: ^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$
+        required: true
+        example: '31c451d5-3ea9-46fc-9927-bc073fd97a9a'
+    xTransactionId:
+      # -- All operations should be passed an X-Transaction-Id for tracing purposes.
+      name: X-Transaction-Id
+      description: |-
+        A unique identifier for a whole request chain.
+        Its value must match in pairs request/response.
+      required: false
+      in: header
+      schema:
+        type: string
+        pattern: ^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$
+        required: true
+        example: 'ebe11537-c652-49dc-b611-4ddda05613a9'
+    acceptLanguage:
+      name: Accept-Language
+      description: The consumer requests the list of languages in order of preference.
+      required: false
+      in: header
+      schema:
+        type: string
+        required: false
+        maxLength: 100
+        example: Example
+    accept:
+      name: Accept
+      description: The consumer requests the data format of the response.
+      required: false
+      in: header
+      schema:
+        default: application/json
+        type: string
+        required: false
+        example: application/json
+    authorization:
+      name: Authorization
+      description: Field to send the access token or the Json Web Token to the API (OAuth - access token, JWT - Json Web Token).
+      required: true
+      in: header
+      schema:
+        type: string
+        required: true
+        example: Bearer h0r8Kx343wa-GUPGvy-H2rGlaQNWsM8sGuOpsNAkXOId3nz9DQXVq_WaGLiS1epXZ2EVhHmN9jm4owJC-HfKZQ
+    clientId:
+      name: Client-Id
+      description: Application Client-Id Security Credentials.
+      required: true
+      in: header
+      schema:
+        type: string
+        required: true
+        maxLength: 100
+        example: 7ca53be88fa44fb8b6f5080d77d64837
+    contentLanguage:
+      name: Content-Language
+      description: The server responds with the language of the response.
+      required: false
+      in: header
+      schema:
+        type: string
+        required: false
+        maxLength: 100
+        example: Example
+    contentType:
+      name: Content-Type
+      description: The server responds with the format of the response data.
+      required: true
+      in: header
+      schema:
+        default: application/json
+        type: string
+        required: true
+        example: application/json
+    eTag:
+      name: ETag
+      description: Field used in the process of accessing/modifying cached resources.
+      required: false
+      in: header
+      schema:
+        type: string
+        required: false
+        maxLength: 100
+        example: Example
+    ifMatch:
+      name: If-Match
+      description: Used for service modification requests. Allows you to make changes only if no other client has made any other changes during the run.
+      required: false
+      in: header
+      schema:
+        type: string
+        required: false
+        maxLength: 100
+        example: Example
+    ifNoneMatch:
+      name: If-None-Match
+      description: Get the cached data as long as the ETag has not changed.
+      required: false
+      in: header
+      schema:
+        type: string
+        required: false
+        maxLength: 100
+        example: Example
+  headers:
+    xCorrelationId:
+      schema:
+        description: |-
+          A unique identifier for a whole request chain.
+          Its value must match in pairs request/response.
+        type: string
+        required: true
+        example: '31c451d5-3ea9-46fc-9927-bc073fd97a9a'
+    xTransactionId:
+      schema:
+        description: |-
+          A unique identifier for a whole request chain.
+          Its value must match in pairs request/response.
+        type: string
+        required: true
+        example: 'ebe11537-c652-49dc-b611-4ddda05613a9'
+    location:
+      schema:
+        description: |-
+          Standard HTTP header that should be populated when a resource is created.
+          The server returns after a POST the URL of the newly created resource following the next pattern:
+            '/<resource-name>/<resource-name-id>'
+        type: string
+        required: true
+        example: '/<resource-name>/<resource-name-id>'
+    # -- Mulesoft API Manager Rate Limiting response headers
+    xRatelimitLimit:
+      schema:
+        type: integer
+        required: false
+        description: The maximum available requests per window.
+    xRatelimitRemaining:
+      schema:
+        type: integer
+        required: false
+        description: The amount of available quota.
+    xRatelimitReset:
+      schema:
+        type: integer
+        required: false
+        description: The remaining time, in milliseconds, until a new window starts.

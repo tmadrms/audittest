@@ -1,0 +1,12 @@
+value:
+  option: 'NGOCopyDocumentExt'
+  cabinetName: 'ngrldevcabinet'
+  userDBId: '653431555'
+  destFolderIndex: '192'
+  dataAlsoFlag: 'Y'
+  currentDateTime: ''
+  documents:
+    - documentIndex: '100'
+      parentFolderIndex: '192'
+  base64Encoded: N
+  locale: 'en_US'

@@ -1,0 +1,7 @@
+name: User-Name
+description: Session Connect Cabinet User-Name unique identification of the user who needs session.
+required: true
+in: header
+schema:
+  example: 'devuserccm'
+  type: string
