@@ -99,6 +99,12 @@ paths:
             application/json:
               schema:
                 $ref: 'refs.yml#/components/schemas/TestRef2'
+        '409':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: 'refs.yml#/components/schemas/TestRef3'
         default:
           description: Unauthorized
           content:
