@@ -16,3 +16,15 @@ components:
           #maxLength: 10
       type: object
       additionalProperties: false
+    TestRef2:
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: TestRefExample2
+          #pattern: ^[A-Za-z0-9]{3,10}$
+          #maxLength: 10
+      type: object
+      additionalProperties: false
