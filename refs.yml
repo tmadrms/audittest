@@ -1,0 +1,18 @@
+openapi: '3.0.2'
+info:
+  title: References
+  version: '1.0'
+components:
+  schemas:
+    TestRef:
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: TestRefExample
+          pattern: ^[A-Za-z0-9]{3,10}$
+          maxLength: 10
+      type: object
+      additionalProperties: false

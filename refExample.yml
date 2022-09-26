@@ -1,0 +1,101 @@
+openapi: '3.0.2'
+info:
+  title: API Title
+  version: '1.0'
+servers:
+  - url: https://api.server.test/v1
+  - url: http://localhost:5000
+
+security:
+  - OAuth2:
+      - write
+      - read
+
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          scopes:
+            readOnly: read objects in your account
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+  schemas:
+    User:
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: andy
+          pattern: ^[A-Za-z0-9]{3,10}$
+          maxLength: 10
+      type: object
+      additionalProperties: false
+
+    Failure:
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: andy
+          pattern: ^[A-Za-z0-9]{3,10}$
+          maxLength: 10
+      type: object
+      additionalProperties: false  
+
+    NewPet:
+      type: object
+      description: JSON defining a Pet object
+      additionalProperties: false
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          maxLength: 10
+          pattern: ^[A-Za-z0-9]{3,10}$
+paths:
+  /test:
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/plain:
+              schema:
+                $ref: '#/components/schemas/User'
+        "404":
+          description: success
+          content:
+            application/plain:
+              schema:
+                $ref: "#/components/schemas/NewPet"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Failure'
+        '403':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Failure'
+        '429':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: 'refs.yml#/components/schemas/TestRef'
+        default:
+          description: Unauthorized
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/Failure'
