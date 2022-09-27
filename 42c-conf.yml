@@ -1,0 +1,6 @@
+audit:
+  branches:
+    main:
+      mapping:
+        refExample.yml: 7499364f-26c1-4568-b15e-4c6c9fc14245
+      discovery: false
