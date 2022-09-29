@@ -35,7 +35,7 @@ components:
           example: 1
         name:
           type: string
-          example: TestRefExample2
+          example: TestRefExample3
           pattern: ^[A-Za-z0-9]{3,10}$
           maxLength: 10
       type: object
