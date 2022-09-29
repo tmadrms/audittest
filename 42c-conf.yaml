@@ -1,6 +1,6 @@
 audit:
   branches:
-    main:
+    origin/main:
       mapping:
         refExample.yaml: 99766a6d-376d-4897-9890-a96dc6a11e78
       discovery: false
