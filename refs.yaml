@@ -12,8 +12,8 @@ components:
         name:
           type: string
           example: TestRefExample
-          pattern: ^[A-Za-z0-9]{3,10}$
-          maxLength: 10
+          #pattern: ^[A-Za-z0-9]{3,10}$
+          #maxLength: 10
       type: object
       additionalProperties: false
     TestRef2:
@@ -24,8 +24,8 @@ components:
         name:
           type: string
           example: TestRefExample2
-          pattern: ^[A-Za-z0-9]{3,10}$
-          maxLength: 10
+          #pattern: ^[A-Za-z0-9]{3,10}$
+          #maxLength: 10
       type: object
       additionalProperties: false
     TestRef3:
@@ -36,7 +36,7 @@ components:
         name:
           type: string
           example: TestRefExample3
-          pattern: ^[A-Za-z0-9]{3,10}$
-          maxLength: 10
+          #pattern: ^[A-Za-z0-9]{3,10}$
+          #maxLength: 10
       type: object
       additionalProperties: false
